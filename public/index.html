@@ -84,7 +84,7 @@
         .then(({ data }) => {
           input.value = ''
           target.textContent = data.url
-          output.value = `https://w0q.de/${data.id}`
+          output.value = `${window.location.origin}/${data.id}`
           output.focus()
           output.select()
           success.classList.remove('invisible')
