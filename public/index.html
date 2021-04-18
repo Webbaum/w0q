@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>w0q URL Shortening</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-50">
+    <div class="container mx-auto py-10 min-h-screen flex flex-col items-center justify-center">
+      <h1 class="text-gray-900 font-semibold tracking-wide text-4xl">w0q<h1>
+      <h2 class="text-gray-900 font-medium text-2xl">URL Shortening</h2>
+      <h3 class="text-gray-400 text-sm">super short URLs</h3>
+      <div class="h-10"></div>
+      <form class="flex flex-col items-center space-y-6 mb-6">
+        <input
+          type="url"
+          name="url_to_be_super_shortend"
+          class="px-4 py-1 bg-white border focus:border-gray-400 rounded-sm"
+          pattern="http(s)?://.*"
+          size="30"
+          placeholder="gimmme gimme gimme"
+          autocomplete="off"
+          autofocus
+          required
+          auto
+        >
+        <input
+          type="submit"
+          value="Make it super short!"
+          class="block w-full bg-blue-300 text-blue-800 font-medium py-2 px-4 border rounded-sm border border-blue-600 hover:bg-blue-600 hover:text-blue-100 cursor-pointer transition duration-75 ease-in-out"
+        >
+      </form>
+    </div>
+
+    <div class="flex items-center justify-center text-xs fixed bottom-0 w-full">
+      <a class="text-gray-400 hover:text-gray-800 py-1 px-1 mx-2 transition duration-75 ease-in-out" href="/legal/">Legal</a>
+    </div>
+  </body>
+
+  <script>
+    (() => {
+      const form = document.querySelector('form')
+      const input = document.querySelector('input[type=url]')
+
+      form.onsubmit = event => {
+        event.preventDefault()
+        console.log(event)
+
+        fetch('/linq/', {
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          method: 'POST',
+          body: JSON.stringify({
+            url_to_be_super_shortend: input.value
+          })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+      }
+    })()
+  </script>
+</html>
