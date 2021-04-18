@@ -30,7 +30,7 @@
         <input
           type="submit"
           value="Make it super short!"
-          class="block w-full bg-blue-300 text-blue-800 font-medium py-2 px-4 border rounded-sm border border-blue-600 hover:bg-blue-600 hover:text-blue-100 cursor-pointer transition duration-75 ease-in-out"
+          class="block w-full bg-blue-100 text-blue-800 font-medium py-2 px-4 border rounded-sm border border-blue-600 hover:bg-blue-600 hover:text-blue-100 cursor-pointer transition duration-75 ease-in-out"
         >
       </form>
     </div>
@@ -49,11 +49,11 @@
         event.preventDefault()
         console.log(event)
 
-        fetch('/linq/', {
+        fetch('/url/', {
           headers: { 'Content-Type': 'application/json; charset=utf-8' },
           method: 'POST',
           body: JSON.stringify({
-            url_to_be_super_shortend: input.value
+            url: input.value
           })
         })
         .then(response => response.json())
