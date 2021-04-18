@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>w0q URL Shortening</title>
     <link rel="shortcut icon" href="/favicon.png">
-
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
   </head>
   <body class="bg-gray-50">
     <div class="container mx-auto py-10 min-h-screen flex flex-col items-center justify-center">
@@ -49,16 +48,16 @@
           id="output"
           class="px-4 py-1 my-2 bg-white border rounded-sm text-center tracking-wider"
           type="text"
+          value="https://w0q.de/"
           readonly
         >
         <p class="text-sm text-gray-500">now forwards to</p>
-        <p class="text-sm" id="target"></p>
+        <p class="text-sm" id="target">https://w0q.de/</p>
       </div>
     </div>
 
     <div class="flex items-center justify-center text-xs fixed bottom-0 w-full">
       <a class="text-gray-400 hover:text-gray-800 py-1 px-1 mx-2 transition duration-75 ease-in-out" href="/legal/">Legal</a>
-      <a class="text-gray-400 hover:text-gray-800 py-1 px-1 mx-2 transition duration-75 ease-in-out" href="https://loading.io/icon/" target="_BLANK" rel="noopener nofollow">icon 'wok' from loading.io</a>
     </div>
   </body>
 
@@ -74,7 +73,7 @@
         event.preventDefault()
         success.classList.add('invisible')
 
-        fetch('/url/', {
+        fetch('/url', {
           headers: { 'Content-Type': 'application/json; charset=utf-8' },
           method: 'POST',
           body: JSON.stringify({
@@ -85,7 +84,7 @@
         .then(({ data }) => {
           input.value = ''
           target.textContent = data.url
-          output.value = `https://w0q.de./${data.id}`
+          output.value = `https://w0q.de/${data.id}`
           output.focus()
           output.select()
           success.classList.remove('invisible')
