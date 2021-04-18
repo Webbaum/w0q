@@ -37,6 +37,7 @@
           auto
         >
         <input
+          id="submit"
           type="submit"
           value="Make it super short!"
           class="block w-full bg-blue-100 text-blue-800 font-medium py-2 px-4 border rounded-sm border border-blue-600 hover:bg-blue-600 hover:text-blue-100 cursor-pointer transition duration-75 ease-in-out"
@@ -48,7 +49,8 @@
           id="output"
           class="px-4 py-1 my-2 bg-white border rounded-sm text-center tracking-wider"
           type="text"
-          value="https://w0q.de/"
+          size="30"
+          value="https://w0q.de/12345"
           readonly
         >
         <p class="text-sm text-gray-500">now forwards to</p>
@@ -65,9 +67,16 @@
     (() => {
       const form = document.querySelector('form')
       const input = document.getElementById('input')
+      const submit = document.getElementById('submit')
       const output = document.getElementById('output')
       const target = document.getElementById('target')
       const success = document.getElementById('success')
+
+      submit.onclick = event => {
+        if (input.value !== '') return
+        event.preventDefault()
+        window.open('https://youtu.be/XEjLoHdbVeE?t=70', '_blank').focus()
+      }
 
       form.onsubmit = event => {
         event.preventDefault()
