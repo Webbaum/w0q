@@ -25,6 +25,104 @@
         <h3 class="text-gray-400 text-sm">super short URLs</h3>
       </a>
       <div class="h-10"></div>
+      <div>
+        <h2 class="text-3xl">Imprint</h2>
+        <p class="mb-8">{{ .address }}</p>
+
+        <h3 class="text-2xl">Contact</h3>
+        <p class="mb-8">
+            {{ .mail }}<br/>
+            {{ .phone }}
+        </p>
+
+        <h2 class="text-3xl mb-4 mt-16">Privacy Policy</h2>
+
+        <h3 class="text-2xl mb-4">Who is responsible?</h3>
+        <p class="mb-4">
+          The responsible party for this site and thus for the collection of your data is the operator of this website:
+        </p>
+        <p class="mb-4">{{ .address }}</p>
+
+        <h3 class="text-2xl mb-4">What data is collected when using this website?</h3>
+        <p class="mb-4">
+          This site is explicitly designed in such a way that (almost) no data is required from you for its operation. Only
+          the usual log files are written to the server.
+          <br />
+          These include:
+        </p>
+        <p class="mb-4">
+        </p>
+        <ul class="list-disc ml-8 mb-4">
+          <li>your IP address</li>
+          <li>the page you are visiting</li>
+          <li>the time you accessed the page</li>
+          <li>the page from which you were redirected to this site</li>
+          <li>which browser and operating system you are using</li>
+        </ul>
+        <p class="mb-4">
+          We use this data to be able to analyse how many (different) visitors visit our site at what time (and where they
+          come from) and also to be able to trace where the accesses came from in the event of an attack.
+        </p>
+        <p class="mb-4">
+          Incidentally, the legal basis for collecting the data is, on the one hand, the enriched interest in Art. 6 para. 1
+          lit. f DSGVO, in order to improve our website, and the fulfilment of a legal obligation in Art. 6 para. 1 lit. c
+          DSGVO, as we need to ensure that we can react adequately in the event of an attack and evaluate this attack.
+        </p>
+
+        <h3 class="text-2xl mb-4">What happens with my data?</h3>
+        <p class="mb-4">
+          We use your data exclusively to learn something about the use of our website ourselves and, for example, to
+          determine which of our articles are particularly interesting. We do not pass on the data to any third party at any
+          time! We do use Netcup GmbH, a data centre provider who operates our servers on our behalf, but they do not have
+          access to your data.
+        </p>
+
+        <h3 class="text-2xl mb-4">How long will my data be stored?</h3>
+        <p class="mb-4">
+          We store your data for a period of 12 months. The storage takes place exclusively on our servers in Germany.
+        </p>
+
+        <h3 class="text-2xl mb-4">How is my data protected?</h3>
+        <p class="mb-4">
+          It is very important to us that your data - even if it is only your IP address and your browser - is safe with us!
+          That's why we use various techniques to protect it.
+          <br />
+          These include:
+        </p>
+        <ul class="list-disc ml-8 mb-4">
+          <li>Use of a firewall on all servers</li>
+          <li>use of encryption in transmission (SSL or TLS)</li>
+          <li>careful selection of our administrators</li>
+          <li>constant further training of those responsible</li>
+          <li>regular updates of the server operating systems</li>
+        </ul>
+
+        <h3 class="text-2xl mb-4">What rights do I have?</h3>
+        <p class="mb-4">
+          Of course, you have all the rights you are entitled to according to the DSGVO!
+          <br />
+          These include:
+        </p>
+        <ul class="list-disc ml-8 mb-4">
+          <li>Right to deletion: If you wish, we will delete all data that we have collected from you at any time.</li>
+          <li>Right to information: You can ask us at any time which of your data we have stored.</li>
+          <li>Right to rectification: If the data we have collected is incorrect, you can always inform us and we will correct
+            the errors.</li>
+          <li>Right to transfer: If you wish, we can transfer the data we have collected to you.</li>
+          <li>Right to restriction of processing: If you wish, we are happy to exclude your data from processing (in which
+            case we would simply delete it)</li>
+          <li>Right to complain: You can complain about us to a supervisory authority - we would of course be happy if you
+            approached us first!</li>
+        </ul>
+        <p class="mb-4">
+          All these rights are of course available to you free of charge!
+        </p>
+
+        <h3 class="text-2xl mb-4">Who can I contact if I have any questions?</h3>
+        <p class="mb-4">
+          If you have any questions, we are always happy to receive an email from you! You can reach us by email at {{ .mail }}.
+        </p>
+      </div>
       <a class="text-gray-400 hover:text-gray-800 py-1 px-1 mx-2 transition duration-75 ease-in-out" href="https://loading.io/icon/" target="_BLANK" rel="noopener nofollow">icon 'wok' from loading.io</a>
     </div>
 
