@@ -25,6 +25,7 @@
       <div class="h-10"></div>
       <form class="flex flex-col items-center space-y-6 mb-6">
         <input
+          id="input"
           type="url"
           name="url_to_be_super_shortend"
           class="px-4 py-1 bg-white border focus:border-gray-400 rounded-sm"
@@ -42,6 +43,17 @@
           class="block w-full bg-blue-100 text-blue-800 font-medium py-2 px-4 border rounded-sm border border-blue-600 hover:bg-blue-600 hover:text-blue-100 cursor-pointer transition duration-75 ease-in-out"
         >
       </form>
+      <div id="success" class="text-center invisible">
+        <p class="text-green-500 font-medium uppercase tracking-wider">Hurray!!!</p>
+        <input
+          id="output"
+          class="px-4 py-1 my-2 bg-white border rounded-sm text-center tracking-wider"
+          type="text"
+          readonly
+        >
+        <p class="text-sm text-gray-500">now forwards to</p>
+        <p class="text-sm" id="target"></p>
+      </div>
     </div>
 
     <div class="flex items-center justify-center text-xs fixed bottom-0 w-full">
@@ -53,11 +65,14 @@
   <script>
     (() => {
       const form = document.querySelector('form')
-      const input = document.querySelector('input[type=url]')
+      const input = document.getElementById('input')
+      const output = document.getElementById('output')
+      const target = document.getElementById('target')
+      const success = document.getElementById('success')
 
       form.onsubmit = event => {
         event.preventDefault()
-        console.log(event)
+        success.classList.add('invisible')
 
         fetch('/url/', {
           headers: { 'Content-Type': 'application/json; charset=utf-8' },
@@ -67,7 +82,14 @@
           })
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(({ data }) => {
+          input.value = ''
+          target.textContent = data.url
+          output.value = `https://w0q.de./${data.id}`
+          output.focus()
+          output.select()
+          success.classList.remove('invisible')
+        })
       }
     })()
   </script>
