@@ -15,7 +15,11 @@ FROM debian
 WORKDIR /app
 
 ENV GIN_MODE=release
+ENV PORT=8080
 ENV W0Q_DB_PATH=/data/w0q.db
+ENV W0Q_LEGAL_ADDRESS="add your address here"
+ENV W0Q_LEGAL_MAIL="add your email address here"
+ENV W0Q_LEGAL_PHONE="add your phone number here"
 
 COPY --from=build-env /app .
 COPY public/ /app/public

@@ -1,9 +1,11 @@
 package main
 
 import (
+	"github.com/Webbaum/w0q/config"
 	"github.com/Webbaum/w0q/models"
 	"github.com/fsuhrau/anonymizer"
 	"github.com/gin-gonic/gin"
+	"html/template"
 	"math/rand"
 	"net/http"
 	"time"
@@ -25,13 +27,21 @@ func init() {
 
 func main() {
 	r := gin.Default()
+	r.LoadHTMLFiles("public/legal.html")
 
 	models.ConnectDatabase()
+	config.ReadConfig()
 
 	// handle static files
 	r.StaticFile("/", "./public/index.html")
 	r.StaticFile("/index.html", "./public/index.html")
-	r.StaticFile("/legal", "./public/legal.html")
+	r.GET("/legal", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "public/legal.html", gin.H{
+			"address": template.HTML(config.MyConfig.LegalAddress),
+			"mail":    template.HTML(config.MyConfig.LegalMail),
+			"phone":   template.HTML(config.MyConfig.LegalPhone),
+		})
+	})
 	r.StaticFile("/favicon.png", "./public/favicon.png")
 	r.StaticFile("/robots.txt", "./public/robots.txt")
 	r.StaticFile("/styles.css", "./public/styles.css")
