@@ -29,12 +29,11 @@ func main() {
 	r := gin.Default()
 	r.LoadHTMLFiles("public/legal.html")
 
-	models.ConnectDatabase()
 	config.ReadConfig()
+	models.ConnectDatabase()
 
 	// handle static files
 	r.StaticFile("/", "./public/index.html")
-	r.StaticFile("/index.html", "./public/index.html")
 	r.GET("/legal", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "public/legal.html", gin.H{
 			"address": template.HTML(config.MyConfig.LegalAddress),
