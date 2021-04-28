@@ -72,10 +72,17 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": url})
 	})
 
-	r.GET("/:id", func(c *gin.Context) {
+	// TODO: this is a quick fix for the problem described here: https://github.com/gin-gonic/gin/issues/2696
+	// this should be fixed as soon as possible
+	r.NoRoute(func(c *gin.Context) {
+		if c.Request.Method != "GET" {
+			c.JSON(http.StatusMethodNotAllowed, gin.H{"error": "method not allowed!"})
+			return
+		}
 		var url models.Url
+		path := c.Request.URL.Path[1:]
 
-		if err := models.DB.First(&url, "id = ?", c.Param("id")).Error; err != nil {
+		if err := models.DB.First(&url, "id = ?", path).Error; err != nil {
 			c.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
 			return
 		}
