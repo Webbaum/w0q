@@ -1,5 +1,12 @@
 # w0q
 
+![License](https://badges.fw-web.space/github/license/webbaum/w0q)
+![Commit Activity](https://badges.fw-web.space/github/commit-activity/m/webbaum/w0q)
+![Ge Report Card](https://goreportcard.com/badge/github.com/Webbaum/w0q)
+![Go Version](https://badges.fw-web.space/github/go-mod/go-version/webbaum/w0q)
+![Docker Pulls](https://badges.fw-web.space/docker/pulls/webbaum/w0q)
+![Docker Image Size](https://badges.fw-web.space/docker/image-size/webbaum/w0q/latest)
+
 <p align="center">
   <img alt="w0q logo" src="public/logo.svg" width="350">
 </p>
