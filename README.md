@@ -1,6 +1,6 @@
 # w0q
 
-[LOGO]
+[LOGO](logo.svg)
 
 This is just another simple URL shortener. Very lightweigth and fast, written in Go.
 
