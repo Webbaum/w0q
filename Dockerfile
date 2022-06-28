@@ -26,4 +26,6 @@ COPY public/ /app/public
 
 VOLUME /data
 
+EXPOSE 8080
+
 ENTRYPOINT ["/app/w0q"]
