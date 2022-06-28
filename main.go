@@ -25,6 +25,19 @@ func init() {
 	rand.Seed(time.Now().UTC().UnixNano())
 }
 
+func printAscii() {
+	var ascii string = "" +
+		"             ___     ___________\n" +
+		"            / _ \\   //_________/    \n" +
+		" __________| | | |_// _ \n" +
+		" \\\\ \\ /\\ / / | | |//_` |\n" +
+		"  \\\\ V  V /| |_| |/(_| |\n" +
+		"   \\\\_/\\_/__\\___//\\__, |\n" +
+		"                     | |\n" +
+		"                     |_|\n"
+	print(ascii)
+}
+
 func main() {
 	r := gin.Default()
 	r.LoadHTMLFiles("public/legal.html")
@@ -82,6 +95,6 @@ func main() {
 
 		c.Redirect(http.StatusMovedPermanently, url.Url)
 	})
-
+	printAscii()
 	r.Run()
 }
