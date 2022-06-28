@@ -93,6 +93,9 @@ func main() {
 			return
 		}
 
+		access := models.Access{UrlID: url.ID, Date: time.Now()}
+		models.DB.Create(&access)
+
 		c.Redirect(http.StatusMovedPermanently, url.Url)
 	})
 	printAscii()
