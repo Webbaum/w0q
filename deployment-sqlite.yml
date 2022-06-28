@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: w0q-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: w0q
+  template:
+    metadata:
+      labels:
+        app: w0q
+    spec:
+      containers:
+      - name: w0q
+        image: webbaum/w0q:latest
+        volumeMounts:
+          - name: volume-woq
+            mountPath: /data
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "25m"
+          limits:
+            memory: "128Mi"
+            cpu: "50m"
+      volumes:
+      - name: volume-woq
+        hostPath:
+         path: /opt/woq
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: w0q
+spec:
+  type: NodePort
+  selector:
+    app: w0q
+  ports:
+    - port: 8080
