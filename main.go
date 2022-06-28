@@ -39,7 +39,6 @@ func printAscii() {
 }
 
 func main() {
-	printAscii()
 	r := gin.Default()
 	r.LoadHTMLFiles("public/legal.html")
 
@@ -96,6 +95,6 @@ func main() {
 
 		c.Redirect(http.StatusMovedPermanently, url.Url)
 	})
-
+	printAscii()
 	r.Run()
 }
