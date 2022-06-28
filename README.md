@@ -1,8 +1,10 @@
 # w0q
 
-[LOGO](logo.svg)
+<p align="center">
+  <img alt="w0q logo" src="public/logo.svg" width="350">
+</p>
 
-This is just another simple URL shortener. Very lightweigth and fast, written in Go.
+This is just another simple URL shortener. Very lightweight and fast, written in Go.
 
 Website: [w0q.de](https://w0q.de/)
 
@@ -16,4 +18,4 @@ Website: [w0q.de](https://w0q.de/)
 Want to help develop w0q? Nice! If you find an issue, please report it on the issue tracker.
 
 ## License
-[MIT License](file)
+[MIT License](LICENSE)
