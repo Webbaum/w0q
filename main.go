@@ -25,7 +25,21 @@ func init() {
 	rand.Seed(time.Now().UTC().UnixNano())
 }
 
+func printAscii() {
+	var ascii string = "" +
+		"             ___     ___________\n" +
+		"            / _ \\   //_________/    \n" +
+		" __________| | | |_// _ \n" +
+		" \\\\ \\ /\\ / / | | |//_` |\n" +
+		"  \\\\ V  V /| |_| |/(_| |\n" +
+		"   \\\\_/\\_/__\\___//\\__, |\n" +
+		"                     | |\n" +
+		"                     |_|\n"
+	print(ascii)
+}
+
 func main() {
+	printAscii()
 	r := gin.Default()
 	r.LoadHTMLFiles("public/legal.html")
 
