@@ -8,6 +8,7 @@ import (
 	"html/template"
 	"math/rand"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -87,13 +88,28 @@ func main() {
 
 	r.GET("/:id", func(c *gin.Context) {
 		var url models.Url
+		id := c.Param("id")
 
-		if err := models.DB.First(&url, "id = ?", c.Param("id")).Error; err != nil {
+		if strings.HasSuffix(c.Param("id"), "+") {
+			id = strings.TrimSuffix(c.Param("id"), "+")
+		}
+
+		if err := models.DB.First(&url, "id = ?", id).Error; err != nil {
 			c.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
 			return
 		}
 
-		c.Redirect(http.StatusMovedPermanently, url.Url)
+		if strings.HasSuffix(c.Param("id"), "+") {
+			var count int64
+			models.DB.Table("accesses").Where("url_id = ?", id).Count(&count)
+			c.JSON(http.StatusOK, gin.H{"count": count})
+			return
+		} else {
+			access := models.Access{UrlID: url.ID, Date: time.Now()}
+			models.DB.Create(&access)
+
+			c.Redirect(http.StatusMovedPermanently, url.Url)
+		}
 	})
 	printAscii()
 	r.Run()
