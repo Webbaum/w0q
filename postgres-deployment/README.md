@@ -26,10 +26,20 @@ kubectl apply -f deployment-postgres-pv-claim.yml
 kubectl get pvc postgres-pv-claim
 ```
 
-## App
+## postgres
 
 ```bash
 kubectl apply -f deployment-postgres.yml
+
+kubectl get deployments
+```
+
+## App
+
+```bash
+cd ..
+
+kubectl apply -f deployment.yml
 
 kubectl get deployments
 ```
